@@ -1,0 +1,26 @@
+Logging:
+    default: INFO
+
+General:
+    Modus:          Collider
+    Time_Step_Mode: Fixed
+    Delta_Time:     0.1
+    End_Time:       200.0
+    Randomseed:     -1
+    Nevents:        200
+
+Output:
+    Particles:
+        Format:          ["Oscar2013"]
+
+Modi:
+    Collider:
+        Projectile:
+            Particles: {2212: 79, 2112: 108} #Gold197
+        Target:
+            Particles: {2212: 79, 2112: 108} #Gold197
+
+        Sqrtsnn: 200
+        Fermi_Motion: "frozen"
+        Impact:
+            Value: 6
