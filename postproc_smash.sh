@@ -17,8 +17,8 @@ vers_new=8.309
 
 for i in {1..20}
 do
-singularity exec $container python3 compute_observables.py results_$vers_old\_$i series*/run_200_$vers_old\_$i/out_[1-10]/particle_lists.oscar &> log_$i &
-singularity exec $container python3 compute_observables.py results_$vers_new\_$i series*/run_200_$vers_new\_$i/out_[1-10]/particle_lists.oscar &> log_$i &
+singularity exec $container python3 compute_observables.py results_$vers_old\_$i series*/run_200_$vers_old\_$i/out_[1-10]/particle_lists.oscar &> log_$vers_old\_$i &
+singularity exec $container python3 compute_observables.py results_$vers_new\_$i series*/run_200_$vers_new\_$i/out_[1-10]/particle_lists.oscar &> log_$vers_new\_$i &
 done
 wait
 sleep 60
