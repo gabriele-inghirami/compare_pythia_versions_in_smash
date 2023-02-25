@@ -16,6 +16,12 @@ from printing import print_data
 # we decide whether to print also ascii files
 print_ascii = True
 
+# tunes the verbosity level
+# 0 = only errors messages
+# 1 = errors and warning messages
+# >=2 = progress status of the progra
+verbose = 2
+
 # we consider an eta interval between -maxy-dy/2 and +maxy+dy/2,
 # considered as external borders of the bins
 # the center of the first cell is at -maxy, the center of the last cell at +maxy
@@ -31,7 +37,7 @@ ny = int(2*maxy/dy+1)
 npt = int(maxpt/dpt)
 y_arr = np.linspace(-maxy, maxy, num=ny)
 pt_arr = np.linspace(dpt/2, maxpt, num=npt)
-top_abs_rapidity = y[-1] + dy/2
+top_abs_rapidity = maxy + dy/2
 top_pt = maxpt + dpt/2
 
 dNdy_buffer = np.zeros(ny, dtype=np.float64)
@@ -55,7 +61,8 @@ outfile_label = sys.argv[1]
 infiles = sys.argv[2:]
 
 for f in infiles:
-    print("Opening "+f)
+    if (verbose > 0):
+        print("Opening "+f)
     with open(f, "r") as datei:
         events = 0
         try:
@@ -69,7 +76,10 @@ for f in infiles:
             except:
                 break
             try:
-                dNdeta_buffer[:] = 0
+                dNdy_buffer[:] = 0
+                v1y_buffer[:] = 0
+                dNdpt_buffer[:] = 0
+                v2pt_buffer[:] = 0
                 for i in range(n_items):
                     stuff = datei.readline().split()
                     if (stuff[11] != "0"):
@@ -108,4 +118,4 @@ for f in infiles:
         tot_events += events
 
 # output
-print_data(print_ascii, outfile_label, tot_events, pt_arr, y_arr, dpt, dy, dNdpt, dNdy, v1y, v2pt)
+print_data(print_ascii, outfile_label, tot_events, pt_arr, y_arr, dNdpt, dNdy, v1y, v2pt, verbose)
