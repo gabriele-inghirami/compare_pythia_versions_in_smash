@@ -113,7 +113,8 @@ for f in infiles:
                     v2pt += v2pt_buffer
                     dNdy += dNdy_buffer
                     dNdpt += dNdpt_buffer
-            except:
+            except Exception as e:
+                print(e)
                 break
         tot_events += events
         if (verbose > 1):

@@ -9,7 +9,7 @@ def print_data(print_ascii, outputfile_label, tot_events, pt_arr, y_arr, dNdpt, 
         now = datetime.now()
         new_outputfile_label = outputfile_label + now.strftime("_%Y_%m_%d__%H_%M_%S")
         if verbose > 0:
-            print("Warning: output file " + outputfile_label + "already exists")
+            print("Warning: output file " + outputfile_label + " already exists")
             print("Please, check again to have used the correct command syntax")
             print("Anyway, the output file of this program will be changed into " + new_outputfile_label)
         outputfile_label = new_outputfile_label
