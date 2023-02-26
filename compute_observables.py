@@ -34,7 +34,7 @@ maxpt = 4.
 dpt = 0.1
 
 ny = int(2*maxy/dy+1)
-npt = int(maxpt/dpt) - 1
+npt = int(maxpt/dpt)
 y_arr = np.linspace(-maxy, maxy, num=ny)
 pt_arr = np.linspace(dpt/2, maxpt - dpt/2, num=npt)
 top_abs_rapidity = maxy + dy/2
