@@ -28,15 +28,15 @@ verbose = 2
 maxy = 4.
 dy = 0.2
 
-# we consider a pT interval between 0 and maxpt+dpt/2
-# the center of the first cell is at dpt/2, the center of the last cell is at maxpt
+# we consider a pT interval between 0 and maxpt
+# the center of the first cell is at dpt/2, the center of the last cell is at maxpt-dpt/2
 maxpt = 4.
 dpt = 0.1
 
 ny = int(2*maxy/dy+1)
-npt = int(maxpt/dpt)
+npt = int(maxpt/dpt) - 1
 y_arr = np.linspace(-maxy, maxy, num=ny)
-pt_arr = np.linspace(dpt/2, maxpt, num=npt)
+pt_arr = np.linspace(dpt/2, maxpt - dpt/2, num=npt)
 top_abs_rapidity = maxy + dy/2
 top_pt = maxpt + dpt/2
 
