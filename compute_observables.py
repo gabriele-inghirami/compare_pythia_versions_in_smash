@@ -38,7 +38,7 @@ npt = int(maxpt/dpt) - 1
 y_arr = np.linspace(-maxy, maxy, num=ny)
 pt_arr = np.linspace(dpt/2, maxpt - dpt/2, num=npt)
 top_abs_rapidity = maxy + dy/2
-top_pt = maxpt + dpt/2
+top_pt = maxpt
 
 dNdy_buffer = np.zeros(ny, dtype=np.float64)
 dNdy = np.zeros(ny, dtype=np.float64)
@@ -85,7 +85,7 @@ for f in infiles:
                     if (stuff[11] != "0"):
                         En, px, py, pz = np.float64(stuff[5:9])
                         pt = math.sqrt(px**2 + py**2)
-                        if ((pt > top_pt) or (pt == 0) or (En < pz)):
+                        if ((pt >= top_pt) or (pt == 0) or (En < pz)):
                             continue
                         y = 0.5 * math.log((En + pz) / (En - pz))
                         if abs(y) >= top_abs_rapidity:
