@@ -61,7 +61,7 @@ outfile_label = sys.argv[1]
 infiles = sys.argv[2:]
 
 for f in infiles:
-    if (verbose > 0):
+    if (verbose > 1):
         print("Opening "+f)
     with open(f, "r") as datei:
         events = 0
@@ -116,6 +116,8 @@ for f in infiles:
             except:
                 break
         tot_events += events
+        if (verbose > 1):
+            print("Events read: "+str(events) + ", total events read so far: " + str(tot_events))
 
 # output
 print_data(print_ascii, outfile_label, tot_events, pt_arr, y_arr, dNdpt, dNdy, v1y, v2pt, verbose)
