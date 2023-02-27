@@ -4,9 +4,9 @@
 #SBATCH --account=hyihp
 #SBATCH --nodes=1
 #SBATCH --ntasks=10
-#SBATCH --mem-per-cpu=2G
+#SBATCH --mem-per-cpu=3G
 #SBATCH --cpus-per-task=1
-#SBATCH --time=0-7:00:00
+#SBATCH --time=0-4:00:00
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=inghirami@fias.uni-frankfurt.de
 
@@ -21,7 +21,9 @@ cfile=$LH/test_pythia8309/config_$Ecm.yaml
 
 mkdir -p $wdir
 
-# compila smash
+# we compile smash before using it,
+# so to use cpu spcific optimization flags without worries
+
 cd $wdir
 singularity exec $container cmake $sources
 singularity exec $container make smash -j $SLURM_NTASKS
@@ -33,4 +35,5 @@ do
     singularity exec $container ./smash -i $cfile -o out_$i &> log_$i &
 done
 wait
-sleep 30
+# this delay is just to prevent issues with the I/O buffering system
+sleep 20
