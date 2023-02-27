@@ -25,9 +25,9 @@ print_ascii = True
 N_args=len(sys.argv)
 N_input_files=N_args-2
 
-if(N_input_files<2):
+if(N_input_files<1):
    print('Syntax: ./combine_results.py <outputfile label> <inputfile 1> <inputfile 2> ... [inputfile n]')
-   print("(The minimum number of input files is 2)")
+   print("(If only one inputfile is given, this script will just print the ascii output, if enabled.)")
    sys.exit(1)
 
 outputfile_label = sys.argv[1]
