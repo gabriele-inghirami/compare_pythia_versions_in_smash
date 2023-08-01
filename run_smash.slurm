@@ -6,7 +6,7 @@
 #SBATCH --ntasks=10
 #SBATCH --mem-per-cpu=3G
 #SBATCH --cpus-per-task=1
-#SBATCH --time=0-4:00:00
+#SBATCH --time=0-4:30:00
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=inghirami@fias.uni-frankfurt.de
 
@@ -16,8 +16,8 @@ container=$3
 sources=$4
 job_seq_id=$5
 
-wdir=$LH/test_pythia8309/run_$Ecm\_$pythia\_$job_seq_id
-cfile=$LH/test_pythia8309/config_$Ecm.yaml
+wdir=$LH/compare_pythia_versions_in_smash/RUNS/run_$Ecm\_$pythia\_$job_seq_id
+cfile=$LH/compare_pythia_versions_in_smash/config_$Ecm.yaml
 
 mkdir -p $wdir
 
@@ -27,6 +27,7 @@ mkdir -p $wdir
 cd $wdir
 singularity exec $container cmake $sources
 singularity exec $container make smash -j $SLURM_NTASKS
+rm -rf 3* Testing src CMake* doc Makefile DartConfiguration.tcl compile_commands.json *.cmake
 
 sleep 1
 
@@ -36,4 +37,5 @@ do
 done
 wait
 # this delay is just to prevent issues with the I/O buffering system
+rm -rf tabulations
 sleep 20
