@@ -8,13 +8,13 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --time=0-0:15:00
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=inghirami@fias.uni-frankfurt.de
+#SBATCH --mail-user=gabriele.inghirami@gmail.com
 
-container=$LH/smash-pythia8310.sif
+container=/cvmfs/vae.gsi.de/vae23/containers/user_container-production.sif
 datadir=$LH/compare_pythia_versions_in_smash/RUNS/
 
-vers_old=8.309
-vers_new=8.310
+vers_old=8.310
+vers_new=8.311
 
 for i in {1..30}
 do

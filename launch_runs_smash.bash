@@ -1,8 +1,8 @@
 Ecm=200
-pythia_old=8.309
-pythia_new=8.310
-sif_pythia_old=$LH/smash-3.0_max.sif
-sif_pythia_new=$LH/smash-pythia8310.sif
+pythia_old=8.310
+pythia_new=8.311
+sif_pythia_old=$LH/smash-pythia8310.sif
+sif_pythia_new=$LH/smash-pythia8311.sif
 source_old=/SMASH/smash
 source_new=$source_old #we are taking the sources from different containers, so they have the same name, but they are different directories
 for h in {1..30}
