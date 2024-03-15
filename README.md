@@ -21,11 +21,16 @@ Here is a possible sequence of steps, used to compare Pythia versions 8.307 and 
 - prepare a Singularity container image, e.g. with `singularity build smash-pythia8310.sif docker://ghcr.io/gabriele-inghirami/smash-pythia8310:latest` if you uploaded it on GH (please, adapt to your case)
 - clone this repository and entr inside its main directory
 - (optionally) create a directory in which to store the results (e.g. RUNS)
-- adjust the scripts accordingly your current names of container images and directories
+- adjust the scripts accordingly to your current names of container images and directories
+
+### Usage example Pythia 8.310 vs 8.311
+- prepare two Docker container images, one with the main branch and the old Pythia version and the other with the new branch and the new Pythia version, then export them as tar archive and copy them on the Virgo cluster
+- prepare two Singularity/Apptainer container images, e.g. with `singularity build smash-pythia8311.sif docker-archive://smash-pythia8311.tar`
+- adjust the scripts accordingly to your current names of container images and directories
 
 ### Common final steps
 - launch the **SMASH** runs with `./launch_runs_smash.bash` (which in turns launches several times the slurm script _run_smash.slurm_, using _config_200.yaml_ as configuration file)
 - launch the slurm script for the postprocessing with `sbatch postproc_smash.slurm`, which executes many instances of the script _compute_observables.py_
-- combine the results with something like `python3 combine_results.py results_8.307 *8.307*.pickle` (separately for each Pythia version). The merging uses only _.pickle_ archive files.
+- combine the results with something like `python3 combine_results.py results_8.310 *8.310*.pickle` (separately for each Pythia version). The merging uses only _.pickle_ archive files.
 - make the plots with `gnuplot make_plots.gp`. The gnuplot script uses only the _.txt_ files which are produced by _combine_results.py_ or by _compute_obervables.py_ when their internal harcoded option _print_ascii_ is set to _True_. It is often convenient and easier to make the plots locally after copying the final output _.txt_ files. from the cluster.
 - it is possible to convert the plots from _.eps_ to _.pdf_ format with: `for i in *.eps; do ps2pdf -dEPSCrop $i; done` (but there are of course several other ways/programs, e.g. `for i in *.pdf; do pdftoppm -png $i ${i%%.pdf}; done` should also work if `pdftoppm`, usually included in the package `poppler-utils` on Debian, is installed).

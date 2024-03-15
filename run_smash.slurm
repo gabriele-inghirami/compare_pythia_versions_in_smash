@@ -6,9 +6,9 @@
 #SBATCH --ntasks=10
 #SBATCH --mem-per-cpu=3G
 #SBATCH --cpus-per-task=1
-#SBATCH --time=0-4:30:00
-#SBATCH --mail-type=ALL
-#SBATCH --mail-user=gabriele.inghirami@gmail.com
+#SBATCH --time=0-5:00:00
+#SBATCH --mail-type=NONE
+##SBATCH --mail-user=<your email here>
 
 Ecm=$1
 pythia=$2
