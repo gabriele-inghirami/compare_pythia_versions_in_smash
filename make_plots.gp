@@ -1,7 +1,7 @@
 ### Pythia versions *********
 
-versA="8.310"
-versB="8.311"
+versA="8.311"
+versB="8.312"
 
 ### Terminal type and line styles **********
 

@@ -1,10 +1,9 @@
 ## Introduction:
 
-This repository contains the scripts and the config file used to compare the results of SMASH compiled with Pythia version 8.309 and 8.310.
+This repository contains the scripts and the config file used to compare the results of SMASH compiled with two Pythia 8.3 versions
 This material, with minor modifications, should be reusable also for future Pythia version.
 The slurm scripts have been written for the Virgo cluster at GSI, but they can be easily adapted for other clusters.
 Tested with Python version: 3.10.12 and gnuplot version: 5.4.8.
-Usage date: 01/08/2023.
 
 ## How to use the content of this repository
 

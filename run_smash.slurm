@@ -4,7 +4,7 @@
 #SBATCH --account=hyihp
 #SBATCH --nodes=1
 #SBATCH --ntasks=10
-#SBATCH --mem-per-cpu=3G
+#SBATCH --mem-per-cpu=2G
 #SBATCH --cpus-per-task=1
 #SBATCH --time=0-5:00:00
 #SBATCH --mail-type=NONE
@@ -41,4 +41,4 @@ done
 wait
 # this delay is just to prevent issues with the I/O buffering system
 rm -rf tabulations
-sleep 20
+sleep 10
